@@ -1,0 +1,140 @@
+Inputs:
+noisy calibrations (what does that mean)
+accurate world points (how is that determined, accurate)
+world points (what are these?)
+what is a projection check?
+
+
+At the very least open these using json and pycharm
+
+The aim of this project is to find camera calibrations and 3d point position describing a
+scene given observations of the 3d points in each camera.
+
+What are camera calibrations practically?
+Finding camera calibrations?
+
+Finding 3D point positions?
+What does find 3D point positions describing a scene mean?
+
+What are observations?
+What are observations of 3D points in each camera mean?
+
+
+
+Different camera have different number of observations (2D point)
+
+
+Given 3 files:
+
+Plotting each camera and plotting each point in blender
+
+
+
+What are camera intrinsics from the perspective of blender?
+What are camera intrinsics from the blender perspective?
+
+Actual2D->3D->2D->3D->2D
+Predicted2DFrom3D
+Actual2D: confidence score
+Least square
+BA (least squares)
+
+
+extrinsics: 3 x 4
+	3 x 3: Rotation matrix
+	Transforming from rotation matrix like this to a rotation vector (X,Y,Z) using opencv
+	https://answers.opencv.org/question/85360/rotation-matrix-to-rotation-vector-rodrigues-function/
+Rodrigues(rot_mat, rot_vec);
+	3:1 translation
+
+
+Intrinsic: 3 x 3
+	Principal point centre of the camera roughly 
+	Use a checkboard????
+
+Length between chip/sensor and lens
+Size resolution of the image
+
+
+Observation
+
+Postion of the camera in the world (is it our world or "Blender/Simulated" world?)
+P = -R.transpose() * t
+
+
+
+
+Camera view
+
+Coordinate system?
+
+The digital representation of the world/simulated world
+
+Rotation 
+
+
+
+Process of calibration
+
+Observations: points of interest, x and y
+1 point in 1 image
+Find the same point in the other view
+
+Extract 2D keypoints
+Match them
+
+Feature extraction
+Remove outliers using Ransac
+Finding match 
+
+Find a way 
+
+
+Better to have more than 18 points
+Noisy points and outliers
+Fundamental matrix from matching points
+
+Bundle adjustment:
+At first
+Good matching points 
+
+If perfect no bundle adjustments needed
+Find fundamental matrix
+
+Calculate extrinsics
+More cameras
+
+To adjust it we use an optimisation
+Bundle adjustment
+
+Triangulation
+	Matching points
+	
+
+3D point cloud
+
+Reprojects back to each camera
+Finds residual between 2D keypoints observation and reprojection
+
+changes parameters of camera
+
+Local minimum
+
+
+Good initialisation
+	Camera parameters
+	Rough global minimum
+
+Least square
+Minimising least square
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html
+
+Sparse:
+	residuals possibly?
+
+
+Dense:
+	residuals possibly?	
+
+
+Calibration 
